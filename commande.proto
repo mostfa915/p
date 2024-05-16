@@ -1,0 +1,28 @@
+syntax = "proto3";
+package commande;
+// Définition du message commande
+message commande {
+string id = 1;
+string title = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les films au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes d
+message GetcommandeRequest {
+string commande_id = 1;
+}
+message GetcommandeResponse {
+commande commande = 1;
+}
+message SearchcommandesRequest {
+string query = 1;
+}
+message SearchcommandesResponse {
+repeated commande commandes = 1;
+}
+// Définition du service de films
+service commandeService {
+rpc Getcommande(GetcommandeRequest) returns (GetcommandeResponse);
+rpc Searchcommandes(SearchcommandesRequest) returns (SearchcommandesResponse);
+// Ajouter d'autres méthodes au besoin
+}
